@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Successful</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .success-modal {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            text-align: center;
+            animation: popIn 0.5s ease-out;
+        }
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+        }
+        .success-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: white;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .transfer-details {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .transfer-details p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .transfer-details strong {
+            display: block;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn:hover {
+            background-color: #4CAF50;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="success-modal">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h1>Transfer Successful</h1>
+        
+        <div class="transfer-details">
+            <p><strong>Transfer ID:</strong> WT-2024-5678</p>
+            <p><strong>Waste Type:</strong> Industrial Waste</p>
+            <p><strong>Quantity:</strong> 50 kg</p>
+            <p><strong>Seller:</strong> GreenTech Recycling</p>
+            <p><strong>Certification Number:</strong> WCN-2023-001</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href=""><button class="btn">Download Receipt</button></a>
+            <a href="landingPage.html"><button class="btn">Done</button></a>
+        </div>
+    </div>
+</body>
+</html>

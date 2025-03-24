@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1A8D5F;
+            --secondary: #3D9970;
+            --accent: #FF6B6B;
+            --light: #F5F5F5;
+            --dark: #333333;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            background: linear-gradient(rgba(26, 141, 95, 0.1), rgba(26, 141, 95, 0.2)), url('/api/placeholder/1600/900');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dashboard-header .logo-icon {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+
+        .dashboard-header .nav-links {
+            display: flex;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .dashboard-header .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #147a4f;
+        }
+
+        .location-map {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rewards-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .notification-banner {
+            background-color: var(--accent);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .notification-banner .icon {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <div class="logo">
+                <span class="logo-icon">♻</span> PlasticUrban
+            </div>
+            <div class="nav-links">
+                <a href="#profile">Profile</a>
+                <a href="#logout">Logout</a>
+            </div>
+        </div>
+
+        <!-- Delivery Notification -->
+        <div class="notification-banner">
+            <div class="icon">🚚</div>
+            <div>
+                <h3>Delivery Agent Assigned</h3>
+                <p>A delivery person is on the way to collect your waste!</p>
+            </div>
+        </div>
+
+        <!-- Pickup Details -->
+        <div class="card">
+            <h3>Pickup Details</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h4>Pickup Address</h4>
+                    <p>123 Green Street, Eco City, Sustainability State, 54321</p>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Estimated Pickup Time: 2:30 PM - 3:30 PM
+                    </p>
+                </div>
+                <div>
+                    <h4>Location</h4>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.982251138448!2d-73.98823!3d40.748817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjYiTiA3M8KwNTknMTcuNiJX!5e0!3m2!1sen!2sus!4v1661345158241!5m2!1sen!2sus" 
+                            class="w-full h-full" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reward Points Section -->
+        <div class="rewards-section">
+            <div>
+                <h3>Reward Points</h3>
+                <p>You'll earn points for your waste contribution!</p>
+            </div>
+            <div class="text-3xl font-bold">
+                250 Points
+            </div>
+        </div>
+
+        <!-- Confirm Selling Button -->
+        <div class="card">
+            <a href="Success.html" class="btn">
+                Confirm Waste Selling
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add any interactive features here
+        document.querySelector('.btn').addEventListener('click', function(e) {
+            // You could add validation or additional logic here
+            console.log('Waste selling confirmed');
+        });
+    </script>
+</body>
+</html>
