@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1A8D5F;
+            --secondary: #3D9970;
+            --accent: #FF6B6B;
+            --light: #F5F5F5;
+            --dark: #333333;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            background: linear-gradient(rgba(26, 141, 95, 0.1), rgba(26, 141, 95, 0.2)), url('/api/placeholder/1600/900');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dashboard-header .logo-icon {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+
+        .dashboard-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .dashboard-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dashboard-nav a:hover {
+            text-decoration: underline;
+        }
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--primary);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .overview-card {
+            text-align: center;
+        }
+
+        .overview-card h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table th, .price-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-table th {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .orders-table th, .orders-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .orders-table th {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #147a4f;
+        }
+
+        .notification-list {
+            list-style: none;
+        }
+
+        .notification-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notification-list li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <div class="logo">
+                <span class="logo-icon">♻</span> PlasticUrban
+            </div>
+            <div class="dashboard-nav">
+                <a href="#profile">Profile</a>
+                <a href="#logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Sidebar Navigation -->
+            <div class="sidebar">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#inventory">Inventory</a></li>
+                    <li><a href="#orders">Orders</a></li>
+                    <li><a href="#logistics">Logistics</a></li>
+                    <li><a href="#notifications">Notifications</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Dashboard Overview (Unchanged) -->
+                <div class="card">
+                    <h3>Dashboard Overview</h3>
+                    <div class="overview-grid">
+                        <div class="overview-card">
+                            <h4>Total Plastic Sold</h4>
+                            <p>500 kg</p>
+                        </div>
+                        <div class="overview-card">
+                            <h4>Earnings</h4>
+                            <p>₹41,250</p>
+                        </div>
+                        <div class="overview-card">
+                            <h4>Active Orders</h4>
+                            <p>3</p>
+                        </div>
+                        <div class="overview-card">
+                            <h4>Pending Orders</h4>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select Plastic Type -->
+                <div class="card">
+                    <h3>Select Plastic Type to Sell</h3>
+                    <div class="form-group">
+                        <label for="plasticType">Plastic Type</label>
+                        <select class="form-control" id="plasticType" required>
+                            <option value="" disabled selected>Select a plastic type</option>
+                            <option value="PET">PET (Polyethylene Terephthalate)</option>
+                            <option value="HDPE">HDPE (High-Density Polyethylene)</option>
+                            <option value="PP">PP (Polypropylene)</option>
+                            <option value="LDPE">LDPE (Low-Density Polyethylene)</option>
+                            <option value="PVC">PVC (Polyvinyl Chloride)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Plastic Prices -->
+                <div class="card">
+                    <h3>Plastic Prices (per kg)</h3>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Price (₹/kg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PET (Polyethylene Terephthalate)</td>
+                                <td>₹85</td>
+                            </tr>
+                            <tr>
+                                <td>HDPE (High-Density Polyethylene)</td>
+                                <td>₹90</td>
+                            </tr>
+                            <tr>
+                                <td>PP (Polypropylene)</td>
+                                <td>₹80</td>
+                            </tr>
+                            <tr>
+                                <td>LDPE (Low-Density Polyethylene)</td>
+                                <td>₹75</td>
+                            </tr>
+                            <tr>
+                                <td>PVC (Polyvinyl Chloride)</td>
+                                <td>₹70</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Order Management (Unchanged) -->
+                <div class="card">
+                    <h3>Order Management</h3>
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Buyer</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#12345</td>
+                                <td>GreenBuild Inc.</td>
+                                <td>Processing</td>
+                                <td>₹1,000</td>
+                                <td><button class="btn">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12346</td>
+                                <td>EcoDesign</td>
+                                <td>Completed</td>
+                                <td>₹500</td>
+                                <td><button class="btn">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Notifications (Unchanged) -->
+                <div class="card">
+                    <h3>Notifications</h3>
+                    <ul class="notification-list">
+                        <li>New order received: #12347</li>
+                        <li>Payment received: ₹750</li>
+                        <li>Stock inquiry from EcoBuild</li>
+                    </ul>
+                </div>
+
+                <!-- Ready to Sell -->
+                <div class="card">
+                    <h3>Ready to Sell?</h3>
+                    <p>Select a plastic type above and click below to proceed.</p>
+                    <button class="btn">Sell Plastic</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity if needed
+        const sellButton = document.querySelector('.btn');
+        sellButton.addEventListener('click', function() {
+            const selectedPlastic = document.getElementById('plasticType').value;
+            if (selectedPlastic) {
+                alert(`You have selected ${selectedPlastic} to sell. Proceed with your sale!`);
+                // Add further logic here (e.g., redirect or form submission)
+            } else {
+                alert('Please select a plastic type first!');
+            }
+        });
+    </script>
+</body>
+</html>
