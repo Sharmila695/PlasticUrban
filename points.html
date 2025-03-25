@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points & Rewards</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A8D5F;
+            --secondary: #3D9970;
+            --accent: #FF6B6B;
+            --light: #F5F5F5;
+            --dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .header h1 {
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: transparent;
+        }
+
+        .header-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Current Points Section */
+        .current-points {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .points-balance {
+            font-size: 48px;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .points-description {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .points-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .points-btn:hover {
+            background-color: #FF4F4F;
+        }
+
+        /* Rewards Section */
+        .rewards-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .reward-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .reward-card:hover {
+            transform: scale(1.05);
+        }
+
+        .reward-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .reward-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .reward-points {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .reward-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .reward-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-links {
+                margin-top: 15px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><span class="logo-icon">♻</span>PlasticUrban
+                &nbsp;&nbsp;&nbsp;
+            
+            <h1>Points & Rewards
+                
+            </h1>
+            <div class="header-links">
+                <a href="profile.html">Profile</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+
+        <!-- Current Points Section -->
+        <div class="current-points">
+            <div class="points-balance">1,250</div>
+            <div class="points-description">Total Points Available</div>
+            <button class="points-btn">Redeem Points</button>
+        </div>
+
+        <!-- Rewards Section -->
+        <div class="rewards-section">
+            <div class="reward-card">
+                <div class="reward-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="reward-title">Croma Voucher</a></div>
+                <div class="reward-points">500 Points</div>
+                <a href="https://www.croma.com/?srsltid=AfmBOoo4Kd5nG_NkDcD0SaJEwaz4qfcyj-TZKR8w9JCi3j6mZdHOlIJC"><button class="reward-btn">Redeem</button></a>
+            </div>
+            <div class="reward-card">
+                <div class="reward-icon"><i class="fab fa-amazon"></i></div>
+                <div class="reward-title">Amazon Gift Card</div>
+                <div class="reward-points">750 Points</div>
+                <a href="https://www.amazon.in/?&tag=googhydrabk1-21&ref=pd_sl_5szpgfto9i_e&adgrpid=155259813593&hvpone=&hvptwo=&hvadid=674893540034&hvpos=&hvnetw=g&hvrand=6792953410973009910&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9184430&hvtargid=kwd-64107830&hydadcr=14452_2316413&gad_source=1"><button class="reward-btn">Redeem</button></a>
+            </div>
+            <div class="reward-card">
+                <div class="reward-icon"><i class="fas fa-shopping-bag"></i></div>
+                <div class="reward-title">Flipkart Voucher</div>
+                <div class="reward-points">500 Points</div>
+                <a href="https://www.flipkart.com/"><button class="reward-btn">Redeem</button></a>
+            </div>
+            <div class="reward-card">
+                <div class="reward-icon"><i class="fas fa-utensils"></i></div>
+                <div class="reward-title">Swiggy Gift Card</div>
+                <div class="reward-points">250 Points</div>
+                <a href="https://www.swiggy.com/restaurants"><button class="reward-btn">Redeem</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
